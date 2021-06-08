@@ -1,0 +1,17 @@
+{
+  "name": "autobattle",
+  "version": "0.0.1",
+  "author": "Renan Liberato <renan.libsantana@gmail.com>",
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "pathfinding": "^0.4.18",
+    "three": "^0.129.0"
+  },
+  "browserslist": [
+    "last 3 and_chr versions",
+    "last 3 chrome versions",
+    "last 3 opera versions",
+    "last 3 ios_saf versions",
+    "last 3 safari versions"
+  ]
+}

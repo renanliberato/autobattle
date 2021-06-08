@@ -1,0 +1,29 @@
+body {
+    padding: 0;
+    max-width: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+/* * {
+    overscroll-behavior: none;
+} */
+
+body, div {
+    display: flex;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: "Press Start 2P";
+    src: local('Press Start 2P'), url(../fonts/PressStart2P-Regular.ttf) format("truetype");
+}
+
+* {
+    font-family: 'Press Start 2P' !important
+}
+
+/* body {
+    background: black;
+} */
