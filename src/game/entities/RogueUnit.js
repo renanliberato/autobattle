@@ -11,34 +11,33 @@ import { threeDModels, UNITSIZE } from '../../config';
 import { HealthBar } from './HealthBar';
 import anime from 'animejs';
 import { ThreeDDamageText } from './ThreeDDamageText';
-import { getDistance } from '../../helpers';
 
-export class MeleeUnit extends Entity {
+export class RogueUnit extends Entity {
     constructor(x, z, team) {
         super({
             UnitKind: new UnitKind({
-                kind: 'warrior'
+                kind: 'rogue'
             }),
             TeamMember: new TeamMember({
                 team: team
             }),
             Health: new Health({
-                max: 400,
-                current: 400,
+                max: 200,
+                current: 200,
             }),
             Stats: new Stats({
-                attack: 100,
-                defense: 10,
-                specialAttackChance: 0.25
+                attack: 70,
+                defense: 7,
+                moveCd: window.stepsInterval,
+                attackCd: window.stepsInterval / 3,
             }),
             ThreeDAttackRange: new ThreeDAttackRange({
                 rangeZ: 1,
                 rangeX: 1,
             }),
-            Rendering: new Rendering({
-            }),
+            Rendering: new Rendering({}),
             ThreeDRendering: new ThreeDRendering({
-                model: threeDModels.sword,
+                model: threeDModels.dagger,
                 animations: {
                     moveToTile: () => {
                         anime({
@@ -79,7 +78,6 @@ export class MeleeUnit extends Entity {
                         //         {value: 0, duration: this.components.Stats.attackCd * 0.2},
                         //     ],
                         // });
-                        
                         anime({
                             loop: false,
                             targets: this.components.ThreeDRendering.object.children[0].rotation,
@@ -121,8 +119,7 @@ export class MeleeUnit extends Entity {
             return;
         }
 
-        this.components.ThreeDRendering.runAnimation('attack', {
-        });
+        this.components.ThreeDRendering.runAnimation('attack', {});
 
         setTimeout(() => {
             enemy.components.Health.current -= amount;
@@ -148,4 +145,3 @@ export class MeleeUnit extends Entity {
         this.components.ThreeDRendering.runAnimation('specialattack', {});
     }
 }
-

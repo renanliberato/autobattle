@@ -33,4 +33,12 @@ export class Entity {
   addEntity(entity) {
     window.world.addEntity(entity);
   }
+
+  queryEntities(query) {
+    return Object.values(window.world.entities).filter(query);
+  }
+
+  update() {
+
+  }
 }

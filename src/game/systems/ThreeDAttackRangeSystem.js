@@ -58,7 +58,7 @@ export class ThreeDAttackRangeSystem extends System {
                     if (entity.components.TeamMember.team === possibleEnemy.components.TeamMember.team)
                         continue;
 
-                    if (wasUndefined)
+                    if (wasUndefined && window.gameTime > entity.components.Stats.nextAttackTime)
                         entity.components.Stats.nextAttackTime = window.gameTime + Math.random().map(0, 1, entity.components.Stats.attackCd * 0.5, entity.components.Stats.attackCd);
 
                     entity.components.ThreeDAttackRange.hasEnemyWithinRange = possibleEnemy.id;
@@ -70,9 +70,6 @@ export class ThreeDAttackRangeSystem extends System {
                     //     possibleEnemy.components.GridPosition.z
                     // ) * 180 / Math.PI;
 
-                    entity.components.ThreeDRendering.runAnimation('attack', {
-
-                    });
                     // anime({
                     //     targets: entity.components.ThreeDRendering.components.chestAnchor.rotate,
                     //     y: angleToCoordinate.map(-180, 180, -Zdog.TAU / 2, Zdog.TAU / 2) + (entity.components.TeamMember.team == 'a' ? -Zdog.TAU / 4 : Zdog.TAU / 4),

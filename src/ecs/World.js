@@ -7,7 +7,7 @@ export class World {
     });
     this.entityIdsToRemove = new Set();
     this.commands = {};
-    this.stepsInterval = 590;
+    this.stepsInterval = 500;
   }
 
   addEntity(entity) {

@@ -97,7 +97,10 @@ export class ThreeDUnitMovementSystem extends System {
         entity.components.GridPosition.x = path[1][0];
         entity.components.GridPosition.z = path[1][1];
 
-        entity.components.ThreeDRendering.runAnimation('moveToTile');
+        entity.components.ThreeDRendering.runAnimation('moveToTile', {
+          x: path[1][0],
+          z: path[1][1],
+        });
 
         // anime({
         //   targets: entity.components.ThreeDRendering.components.chestAnchor.rotate,

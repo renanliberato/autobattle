@@ -2,14 +2,19 @@ import { World } from './ecs/World';
 import { GlobalState } from './game/models/GlobalState';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { CANVAS_HEIGHT, CANVAS_WIDTH, SCALE, threeDFonts, threeDModels, UNITSIZE } from './config';
-import { ClickEvent } from './game/entities/ui/ClickEvent';
-import { PolygonRenderingSystem } from './game/systems/PolygonRenderingSystem';
-import { ClickDetectionSystem } from './game/systems/ClickDetectionSystem';
-import { ImageRenderingSystem } from './game/systems/ImageRenderingSystem';
-import { TextRenderingSystem } from './game/systems/TextRenderingSystem';
+import { threeDFonts, UNITSIZE, XSIZE, YSIZE } from './config';
+import { GrassTile } from './game/entities/GrassTile';
+import { Cloud } from './game/entities/Cloud';
+import { loadGameModels } from './loadGameModels';
 
-require('./game/OrbitControls');
+// require('./game/OrbitControls');
+
+var isPaused = false;
+window.onkeydown = (e) => {
+    if (e.key == "Escape") {
+        isPaused = !isPaused;
+    }
+}
 
 export async function getGame(systems) {
     var state = new GlobalState();
@@ -20,12 +25,16 @@ export async function getGame(systems) {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
     camera.position.set(
-        3 * UNITSIZE,
-        8 * UNITSIZE,
-        -3 * UNITSIZE
+        Math.floor(XSIZE / 2) * UNITSIZE,
+        Math.min(XSIZE, YSIZE) * UNITSIZE,
+        -YSIZE / 4 * UNITSIZE
     );
 
-    camera.lookAt(3 * UNITSIZE, 0, 5 * UNITSIZE);
+    camera.lookAt(
+        Math.floor(XSIZE / 2) * UNITSIZE,
+        0,
+        Math.floor(YSIZE / 2) * UNITSIZE
+    );
 
     const renderer = new THREE.WebGLRenderer({ canvas: gameCanvas });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -34,21 +43,10 @@ export async function getGame(systems) {
     // const controls = new THREE.OrbitControls(camera, renderer.domElement);
     // controls.update();
 
-    const light = new THREE.AmbientLight(0xffffff); // soft white light
+    const light = new THREE.AmbientLight(0xffffff, 1);
     scene.add(light);
 
-    const loader = new GLTFLoader();
     const fontLoader = new THREE.FontLoader();
-
-    function loadModelAsync(path) {
-        return new Promise((resolve, reject) => {
-            loader.load(path, function (gltf) {
-                resolve(gltf.scene);
-            }, undefined, function (err) {
-                reject(err);
-            });
-        })
-    }
 
     function loadFontAsync(path) {
         return new Promise((resolve, reject) => {
@@ -60,33 +58,9 @@ export async function getGame(systems) {
         })
     }
 
-    threeDModels.healthbar = new THREE.Group();
-    const healthbarModel = await loadModelAsync(require('./3dmodels/healthbar.glb'));
-    healthbarModel.scale.set(0.5, 0.3, 0.5);
-    threeDModels.healthbar.add(healthbarModel);
-
-    threeDModels.tile = await loadModelAsync(require('./3dmodels/tile.glb'));
-    
-    threeDModels.sword = new THREE.Group();
-    threeDModels.sword.add(await loadModelAsync(require('./3dmodels/sword.glb')));
-    threeDModels.sword.children[0].scale.set(0.5, 0.5, 0.5);
-    threeDModels.sword.children[0].rotation.y = 0.25 * (Math.PI * 2);
-    // threeDModels.sword.children[0].applyMatrix( new THREE.Matrix4().makeTranslation( 0, -3/2, 0 ) );
-
-    threeDModels.bow = new THREE.Group();
-    threeDModels.bow.add(await loadModelAsync(require('./3dmodels/bow.glb')));
-    threeDModels.bow.children[0].scale.set(0.5, 0.5, 0.5);
-    threeDModels.bow.children[0].rotation.y = -0.25 * Math.PI * 2;
-
-    threeDModels.tower = await loadModelAsync(require('./3dmodels/tower.glb'));
-    threeDModels.tower.scale.set(0.5, 0.5, 0.5);
-
-    threeDModels.cloud = await loadModelAsync(require('./3dmodels/cloud.glb'));
-
-    threeDModels.arrow = new THREE.Group();
-    threeDModels.arrow.add(await loadModelAsync(require('./3dmodels/arrow.glb')));
-    threeDModels.arrow.children[0].scale.set(0.25, 0.25, 0.25);
-    threeDModels.arrow.children[0].rotation.x = 0.25 * Math.PI * 2;
+    await loadGameModels();
+    // threeDModels.tileinventory.children[0].scale.set(0.25, 0.25, 0.25);
+    // threeDModels.tileinventory.children[0].rotation.x = 0.25 * Math.PI * 2;
 
     threeDFonts.default = await loadFontAsync(require('./fonts/PressStart2P_Regular.txt'));
 
@@ -98,40 +72,67 @@ export async function getGame(systems) {
     window.scene = scene;
     window.stepsInterval = world.stepsInterval;
 
-    const scaledRenderingUnit = UNITSIZE * SCALE;
+    // const scaledRenderingUnit = UNITSIZE * SCALE;
 
-    function getCursorPosition(canvas, e) {
-        var x;
-        var y;
-        if (e.pageX || e.pageY) {
-            x = e.pageX;
-            y = e.pageY;
+    // function getCursorPosition(canvas, e) {
+    //     var x;
+    //     var y;
+    //     if (e.pageX || e.pageY) {
+    //         x = e.pageX;
+    //         y = e.pageY;
+    //     }
+    //     else {
+    //         x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+    //         y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    //     }
+    //     x -= canvas.offsetLeft;
+    //     y -= canvas.offsetTop;
+    //     return { x: Math.floor(x / scaledRenderingUnit), y: Math.floor(y / scaledRenderingUnit) };
+    // }
+
+    // gameCanvas.addEventListener('click', (e) => {
+    //     const position = getCursorPosition(gameCanvas, e);
+    //     world.addCommand(new ClickEvent(position.x, position.y));
+    // });
+
+
+    for (var y = 0; y < YSIZE; y++) {
+        for (var x = 0; x < XSIZE; x++) {
+            world.addEntity(new GrassTile(x * UNITSIZE, y * UNITSIZE));
         }
-        else {
-            x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-        }
-        x -= canvas.offsetLeft;
-        y -= canvas.offsetTop;
-        return { x: Math.floor(x / scaledRenderingUnit), y: Math.floor(y / scaledRenderingUnit) };
     }
 
-    gameCanvas.addEventListener('click', (e) => {
-        const position = getCursorPosition(gameCanvas, e);
-        world.addCommand(new ClickEvent(position.x, position.y));
+    [...Array(100).keys()].forEach(_ => {
+        world.addEntity(new Cloud(
+            Math.random().map(0, 1, -32 * UNITSIZE, 43 * UNITSIZE),
+            Math.random().map(0, 1, -4 * UNITSIZE, -8 * UNITSIZE),
+            Math.random().map(0, 1, -12 * UNITSIZE, 50 * UNITSIZE)
+        ));
     });
+
 
     let lastTime = 0;
     let dt = 0;
+
+    var clock = new THREE.Clock();
 
     function update(time) {
         dt = time - lastTime;
         window.gameTime = time;
 
+        if (isPaused) {
+            window.requestAnimationFrame(update);
+            return;
+        }
+
+        Object.keys(world.entities).forEach(k => {
+            world.entities[k].update(clock.getDelta());
+        });
+
         world.runSystems(time, dt);
 
         // controls.update();
-        
+
         renderer.render(scene, camera);
 
         window.requestAnimationFrame(update);
@@ -142,3 +143,5 @@ export async function getGame(systems) {
 
     return { world, state, scene };
 }
+
+

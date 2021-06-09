@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no">
-    <link rel="stylesheet" href="./src/styles/index.css">
-  </head>
-  <body style="align-items: center; justify-content: center;">
-    <canvas id="game-canvas"></canvas>
-    <img style="visibility: collapse; height: 0;" id="img-button-background" src="src/images/button_background.png" />
-    <img style="visibility: collapse; height: 0;" id="img-button-unit-background" src="src/images/button_unit_background.png" />
-    <img style="visibility: collapse; height: 0;" id="img-warrior" src="src/images/warrior.png" />
-    <img style="visibility: collapse; height: 0;" id="img-warrior-damage" src="src/images/warrior_damage.png" />
-    <img style="visibility: collapse; height: 0;" id="img-archer" src="src/images/archer.png" />
-    <img style="visibility: collapse; height: 0;" id="img-archer-damage" src="src/images/archer_damage.png" />
-    <img style="visibility: collapse; height: 0;" id="img-grass" src="src/images/grass.png" />
-    <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/zfont/dist/zfont.min.js"></script>
-    <script src="src/battle.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <link rel="stylesheet" href="./src/styles/index.css">
+</head>
+
+<body style="align-items: center; justify-content: center;">
+  <canvas id="game-canvas"></canvas>
+  <output style="position: absolute; left: 10px; top: 10px;" id="out"></output>
+  <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/zfont/dist/zfont.min.js"></script>
+  <script src="src/battle.js"></script>
+  <script>
+    window.countFPS = (function () {
+      var lastLoop = (new Date()).getMilliseconds();
+      var count = 1;
+      var fps = 0;
+
+      return function () {
+        var currentLoop = (new Date()).getMilliseconds();
+        if (lastLoop > currentLoop) {
+          fps = count;
+          count = 1;
+        } else {
+          count += 1;
+        }
+        lastLoop = currentLoop;
+        return fps;
+      };
+    }());
+
+    var $out = document.getElementById('out');
+    (function loop() {
+      requestAnimationFrame(function () {
+        out.innerHTML = countFPS()+' fps';
+        loop();
+      });
+    }());
+  </script>
+</body>
+
 </html>

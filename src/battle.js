@@ -16,6 +16,9 @@ import { ThreeJSThreeDRenderingSystem } from "./game/systems/ThreeJSThreeDRender
 import { Tower } from "./game/entities/Tower";
 import { ThreeDRelativePositionSystem } from "./game/systems/ThreeDRelativePositionSystem";
 import { ThreeDUnitHealthBarSizingSystem } from "./game/systems/ThreeDUnitHealthBarSizingSystem";
+import { MageUnit } from "./game/entities/MageUnit";
+import { TankUnit } from "./game/entities/TankUnit";
+import { RogueUnit } from "./game/entities/RogueUnit";
 
 require('./globals');
 
@@ -34,33 +37,22 @@ async function initialize() {
         new DelayedObjectDestructionSystem(),
     ]));
 
-    for (var y = 0; y < YSIZE; y++) {
-        for (var x = 0; x < XSIZE; x++) {
-            world.addEntity(new GrassTile(x * UNITSIZE, y * UNITSIZE));
-        }
-    }
-
-    [...Array(100).keys()].forEach(_ => {
-        world.addEntity(new Cloud(
-            Math.random().map(0, 1, -32 * UNITSIZE, 43 * UNITSIZE),
-            Math.random().map(0, 1, -4 * UNITSIZE, -8 * UNITSIZE),
-            Math.random().map(0, 1, -12 * UNITSIZE, 50 * UNITSIZE)
-        ));
-    });
-
-    world.addEntity(new Tower(3, 0, 'a'));
-    world.addEntity(new Tower(3, YSIZE - 1, 'b'));
+    // world.addEntity(new Tower(3, 0, 'a'));
+    // world.addEntity(new Tower(3, YSIZE - 1, 'b'));
 
     // enemies
-    world.addEntity(new MeleeUnit(1, 1, 'a'));
-    world.addEntity(new MeleeUnit(5, 1, 'a'));
+    world.addEntity(new RogueUnit(1, 1, 'a'));
+    world.addEntity(new TankUnit(5, 1, 'a'));
     world.addEntity(new ArcherUnit(2, 0, 'a'));
     world.addEntity(new ArcherUnit(4, 0, 'a'));
+    world.addEntity(new RogueUnit(5, 1, 'a'));
+    world.addEntity(new MageUnit(2, 1, 'a'));
+    world.addEntity(new MageUnit(4, 1, 'a'));
 
-    world.addEntity(new MeleeUnit(1, YSIZE - 2, 'b'));
-    world.addEntity(new MeleeUnit(5, YSIZE - 2, 'b'));
-    world.addEntity(new ArcherUnit(2, YSIZE - 1, 'b'));
-    world.addEntity(new ArcherUnit(4, YSIZE - 1, 'b'));
+    world.addEntity(new TankUnit(1, YSIZE - 2, 'b'));
+    world.addEntity(new TankUnit(5, YSIZE - 2, 'b'));
+    world.addEntity(new TankUnit(2, YSIZE - 1, 'b'));
+    world.addEntity(new TankUnit(4, YSIZE - 1, 'b'));
 
     // state.army.army.forEach(u => {
     //     switch (u.kind) {

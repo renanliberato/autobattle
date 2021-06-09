@@ -15,7 +15,7 @@ export class HealthBar extends Entity {
       ThreeDRelativePosition: {
         owner: ownerId,
         x: 0,
-        y: UNITSIZE * (0.7 + additionalOffset),
+        y: UNITSIZE * (0.9 + additionalOffset),
         z: 0
       }
     });
