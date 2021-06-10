@@ -1,8 +1,8 @@
-import { Position } from '../../components/Position';
-import { Entity } from '../../../ecs/Entity';
-import { Rendering } from '../../components/Rendering';
-import { ImageRendering } from '../../components/ImageRendering';
-import { Size } from '../../components/Size';
+import { Position } from '../../components/Position.js';
+import { Entity } from '../../../ecs/Entity.js';
+import { Rendering } from '../../components/Rendering.js';
+import { ImageRendering } from '../../components/ImageRendering.js';
+import { Size } from '../../components/Size.js';
 
 export class Image extends Entity {
     constructor(x, y, image) {

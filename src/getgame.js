@@ -1,13 +1,13 @@
-import { World } from './ecs/World';
-import { GlobalState } from './game/models/GlobalState';
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { threeDFonts, UNITSIZE, XSIZE, YSIZE } from './config';
-import { GrassTile } from './game/entities/GrassTile';
-import { Cloud } from './game/entities/Cloud';
-import { loadGameModels } from './loadGameModels';
+import { World } from './ecs/World.js';
+import { GlobalState } from './game/models/GlobalState.js';
 
-// require('./game/OrbitControls');
+import { GLTFLoader } from '../libs/GLTFLoader.js';
+import { threeDFonts, UNITSIZE, XSIZE, YSIZE } from './config.js';
+import { GrassTile } from './game/entities/GrassTile.js';
+import { Cloud } from './game/entities/Cloud.js';
+import { loadGameModels } from './loadGameModels.js';
+
+import { OrbitControls } from './game/OrbitControls.js';
 
 var isPaused = false;
 window.onkeydown = (e) => {
@@ -25,9 +25,9 @@ export async function getGame(systems) {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
     camera.position.set(
-        Math.floor(XSIZE / 2) * UNITSIZE,
-        Math.min(XSIZE, YSIZE) * UNITSIZE,
-        -YSIZE / 4 * UNITSIZE
+        0,
+        Math.max(XSIZE, YSIZE) * 0.66 * UNITSIZE,
+        -YSIZE / 5 * UNITSIZE
     );
 
     camera.lookAt(
@@ -62,7 +62,7 @@ export async function getGame(systems) {
     // threeDModels.tileinventory.children[0].scale.set(0.25, 0.25, 0.25);
     // threeDModels.tileinventory.children[0].rotation.x = 0.25 * Math.PI * 2;
 
-    threeDFonts.default = await loadFontAsync(require('./fonts/PressStart2P_Regular.txt'));
+    threeDFonts.default = await loadFontAsync('./src/fonts/PressStart2P_Regular.txt');
 
     var world = new World(systems({ state, scene }));
 

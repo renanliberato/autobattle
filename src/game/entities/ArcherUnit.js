@@ -1,21 +1,20 @@
-import { Position } from '../components/Position';
-import { Entity } from '../../ecs/Entity';
-import { Movement } from '../components/Movement';
-import { Health } from '../components/Health';
-import { Stats } from '../components/Stats';
-import { ThreeDAttackRange } from '../components/ThreeDAttackRange';
-import { TeamMember } from '../components/TeamMember';
-import { Rendering } from '../components/Rendering';
-import { UnitKind } from '../components/UnitKind';
-import { Size } from '../components/Size';
-import { PolygonRendering } from '../components/PolygonRendering';
-import { ThreeDRendering } from '../components/ThreeDRendering';
-import { GridPosition } from '../components/GridPosition';
-import { threeDModels, UNITSIZE } from '../../config';
-import { HealthBar } from './HealthBar';
-import anime from 'animejs';
-import { Arrow } from './Arrow';
-import { ThreeDDamageText } from './ThreeDDamageText';
+import { Position } from '../components/Position.js';
+import { Entity } from '../../ecs/Entity.js';
+import { Movement } from '../components/Movement.js';
+import { Health } from '../components/Health.js';
+import { Stats } from '../components/Stats.js';
+import { ThreeDAttackRange } from '../components/ThreeDAttackRange.js';
+import { TeamMember } from '../components/TeamMember.js';
+import { Rendering } from '../components/Rendering.js';
+import { UnitKind } from '../components/UnitKind.js';
+import { Size } from '../components/Size.js';
+import { PolygonRendering } from '../components/PolygonRendering.js';
+import { ThreeDRendering } from '../components/ThreeDRendering.js';
+import { GridPosition } from '../components/GridPosition.js';
+import { threeDModels, UNITSIZE } from '../../config.js';
+import { HealthBar } from './HealthBar.js';
+import { Arrow } from './Arrow.js';
+import { ThreeDDamageText } from './ThreeDDamageText.js';
 
 export class ArcherUnit extends Entity {
     constructor(x, z, team) {

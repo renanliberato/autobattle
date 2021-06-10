@@ -1,7 +1,5 @@
-import { System } from '../../ecs/System';
-import PF from 'pathfinding';
-import anime from 'animejs';
-import { UNITSIZE } from '../../config';
+import { System } from '../../ecs/System.js';
+import { UNITSIZE } from '../../config.js ';
 
 Number.prototype.map = function (in_min, in_max, out_min, out_max) {
   return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;

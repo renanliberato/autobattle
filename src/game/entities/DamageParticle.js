@@ -1,8 +1,8 @@
-import { Entity } from "../../ecs/Entity";
-import { DestroyAt } from "../components/DestroyAt";
-import { ThreeDAcceleration } from "../components/ThreeDAcceleration";
-import { ThreeDRendering } from "../components/ThreeDRendering";
-import { ThreeDVelocity } from "../components/ThreeDVelocity";
+import { Entity } from "../../ecs/Entity.js";
+import { DestroyAt } from "../components/DestroyAt.js";
+import { ThreeDAcceleration } from "../components/ThreeDAcceleration.js";
+import { ThreeDRendering } from "../components/ThreeDRendering.js";
+import { ThreeDVelocity } from "../components/ThreeDVelocity.js";
 
 export class DamageParticle extends Entity {
     constructor(x, y, z) {

@@ -1,5 +1,7 @@
-import * as THREE from 'three';
 Number.prototype.map = function (in_min, in_max, out_min, out_max) {
     return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
-window.THREE = THREE;
+
+// window.THREE = THREE;
+
+export default function() {};

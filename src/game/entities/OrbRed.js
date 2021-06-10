@@ -1,10 +1,10 @@
-import { threeDModels, UNITSIZE } from '../../config';
-import { Entity } from '../../ecs/Entity';
-import { DestroyAt } from '../components/DestroyAt';
-import { Rendering } from '../components/Rendering';
-import { ThreeDAcceleration } from '../components/ThreeDAcceleration';
-import { ThreeDRendering } from '../components/ThreeDRendering';
-import { ThreeDVelocity } from '../components/ThreeDVelocity';
+import { threeDModels, UNITSIZE } from '../../config.js';
+import { Entity } from '../../ecs/Entity.js';
+import { DestroyAt } from '../components/DestroyAt.js';
+import { Rendering } from '../components/Rendering.js';
+import { ThreeDAcceleration } from '../components/ThreeDAcceleration.js';
+import { ThreeDRendering } from '../components/ThreeDRendering.js';
+import { ThreeDVelocity } from '../components/ThreeDVelocity.js';
 
 export class OrbRed extends Entity {
     constructor(x, z, tx, tz, speed) {

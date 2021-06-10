@@ -1,6 +1,6 @@
-import { ArmyLayout } from "./ArmyLayout";
-import { Model } from "./Model";
-import { UnitInventory } from "./UnitInventory";
+import { ArmyLayout } from "./ArmyLayout.js";
+import { Model } from "./Model.js";
+import { UnitInventory } from "./UnitInventory.js";
 
 export class GlobalState extends Model {
     constructor() {

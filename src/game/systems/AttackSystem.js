@@ -1,8 +1,8 @@
-import { System } from '../../ecs/System';
-import { ArcherAttackLine } from '../entities/ArcherAttackLine';
-import { ArcherUnitDamageIndicator } from '../entities/ArcherUnitDamageIndicator';
-import { DamageText } from '../entities/DamageText';
-import { MeleeUnitDamageIndicator } from '../entities/MeleeUnitDamageIndicator';
+import { System } from '../../ecs/System.js';
+import { ArcherAttackLine } from '../entities/ArcherAttackLine.js';
+import { ArcherUnitDamageIndicator } from '../entities/ArcherUnitDamageIndicator.js';
+import { DamageText } from '../entities/DamageText.js';
+import { MeleeUnitDamageIndicator } from '../entities/MeleeUnitDamageIndicator.js';
 
 export class AttackSystem extends System {
     constructor() {

@@ -1,6 +1,6 @@
-import { System } from '../../ecs/System';
-import { ArcherUnit } from '../entities/ArcherUnit';
-import { MeleeUnit } from '../entities/MeleeUnit';
+import { System } from '../../ecs/System.js';
+import { ArcherUnit } from '../entities/ArcherUnit.js';
+import { MeleeUnit } from '../entities/MeleeUnit.js';
 
 export class ArmyEditorUnitGridDetectionSystem extends System {
     constructor(xSize, ySize, availableUnits) {

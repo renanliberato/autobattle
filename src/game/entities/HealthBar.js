@@ -1,8 +1,8 @@
-import { Entity } from '../../ecs/Entity';
-import { Rendering } from '../components/Rendering';
-import { ThreeDRendering } from '../components/ThreeDRendering';
-import { threeDModels, UNITSIZE } from '../../config';
-import { ThreeDRelativeToCameraRotation } from '../components/ThreeDRelativeToCameraRotation';
+import { Entity } from '../../ecs/Entity.js';
+import { Rendering } from '../components/Rendering.js';
+import { ThreeDRendering } from '../components/ThreeDRendering.js';
+import { threeDModels, UNITSIZE } from '../../config.js';
+import { ThreeDRelativeToCameraRotation } from '../components/ThreeDRelativeToCameraRotation.js';
 
 export class HealthBar extends Entity {
   constructor(ownerId, additionalOffset = 0) {

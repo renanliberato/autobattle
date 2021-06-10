@@ -1,10 +1,8 @@
-import anime from "animejs";
-import * as THREE from 'three';
-import { threeDFonts, UNITSIZE } from "../../config";
-import { Entity } from "../../ecs/Entity";
-import { DestroyAt } from "../components/DestroyAt";
-import { ThreeDRelativeToCameraRotation } from "../components/ThreeDRelativeToCameraRotation";
-import { ThreeDRendering } from "../components/ThreeDRendering";
+import { threeDFonts, UNITSIZE } from "../../config.js";
+import { Entity } from "../../ecs/Entity.js";
+import { DestroyAt } from "../components/DestroyAt.js";
+import { ThreeDRelativeToCameraRotation } from "../components/ThreeDRelativeToCameraRotation.js";
+import { ThreeDRendering } from "../components/ThreeDRendering.js";
 
 function positiveOrNegative() {
     return Math.random() >= 0.5 ? 1 : -1;

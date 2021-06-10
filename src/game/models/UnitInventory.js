@@ -1,4 +1,4 @@
-import { Model } from "./Model";
+import { Model } from "./Model.js";
 
 export class UnitInventory extends Model {
     constructor() {

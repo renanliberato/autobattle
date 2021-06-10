@@ -1,10 +1,10 @@
-import { Position } from '../components/Position';
-import { Entity } from '../../ecs/Entity';
-import { Rendering } from '../components/Rendering';
-import { ImageRendering } from '../components/ImageRendering';
-import { DestroyAt } from '../components/DestroyAt';
-import { Size } from '../components/Size';
-import { PolygonRendering } from '../components/PolygonRendering';
+import { Position } from '../components/Position.js';
+import { Entity } from '../../ecs/Entity.js';
+import { Rendering } from '../components/Rendering.js';
+import { ImageRendering } from '../components/ImageRendering.js';
+import { DestroyAt } from '../components/DestroyAt.js';
+import { Size } from '../components/Size.js';
+import { PolygonRendering } from '../components/PolygonRendering.js';
 
 
 export class ArcherUnitDamageIndicator extends Entity {

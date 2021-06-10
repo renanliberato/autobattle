@@ -1,12 +1,11 @@
-import { System } from '../../ecs/System';
-import { ArcherAttackLine } from '../entities/ArcherAttackLine';
-import { ArcherUnitDamageIndicator } from '../entities/ArcherUnitDamageIndicator';
-import { ThreeDDamageText } from '../entities/ThreeDDamageText';
-import { MeleeUnitDamageIndicator } from '../entities/MeleeUnitDamageIndicator';
-import anime from 'animejs';
-import { DamageParticle } from '../entities/DamageParticle';
-import { Arrow } from '../entities/Arrow';
-import { OrbRed } from '../entities/OrbRed';
+import { System } from '../../ecs/System.js';
+import { ArcherAttackLine } from '../entities/ArcherAttackLine.js';
+import { ArcherUnitDamageIndicator } from '../entities/ArcherUnitDamageIndicator.js';
+import { ThreeDDamageText } from '../entities/ThreeDDamageText.js';
+import { MeleeUnitDamageIndicator } from '../entities/MeleeUnitDamageIndicator.js';
+import { DamageParticle } from '../entities/DamageParticle.js';
+import { Arrow } from '../entities/Arrow.js';
+import { OrbRed } from '../entities/OrbRed.js';
 
 export class ThreeDAttackSystem extends System {
     constructor() {

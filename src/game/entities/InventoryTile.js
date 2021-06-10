@@ -1,7 +1,7 @@
-import { Entity } from '../../ecs/Entity';
-import { Rendering } from '../components/Rendering';
-import { ThreeDRendering } from '../components/ThreeDRendering';
-import { threeDModels } from '../../config';
+import { Entity } from '../../ecs/Entity.js';
+import { Rendering } from '../components/Rendering.js';
+import { ThreeDRendering } from '../components/ThreeDRendering.js';
+import { threeDModels } from '../../config.js';
 
 export class InventoryTile extends Entity {
   constructor(x, z) {

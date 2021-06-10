@@ -1,4 +1,4 @@
-import { Component } from '../../ecs/Component';
+import { Component } from '../../ecs/Component.js';
 
 export class ThreeDPosition extends Component {
   getDefaultProperties() {

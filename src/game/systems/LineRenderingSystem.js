@@ -1,4 +1,4 @@
-import { System } from '../../ecs/System';
+import { System } from '../../ecs/System.js';
 
 function lerp(a, b, t) {
     return (1 - t) * a + t * b;

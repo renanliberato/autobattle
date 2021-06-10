@@ -1,4 +1,4 @@
-import { uuidv4 } from "./uuidv4";
+import { uuidv4 } from "./uuidv4.js";
 
 const STATE_KEY = 'wargame-data';
 export class State {

@@ -1,8 +1,8 @@
-import { Position } from '../components/Position';
-import { Entity } from '../../ecs/Entity';
-import { Rendering } from '../components/Rendering';
-import { DestroyAt } from '../components/DestroyAt';
-import { TextRendering } from '../components/TextRendering';
+import { Position } from '../components/Position.js';
+import { Entity } from '../../ecs/Entity.js';
+import { Rendering } from '../components/Rendering.js';
+import { DestroyAt } from '../components/DestroyAt.js';
+import { TextRendering } from '../components/TextRendering.js';
 
 function positiveOrNegative() {
     return Math.random() >= 0.5 ? 1 : -1;

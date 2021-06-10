@@ -1,6 +1,6 @@
-import { Rotation } from "../game/components/Rotation";
-import { ThreeDPosition } from "../game/components/ThreeDPosition";
-import { ThreeDRotation } from "../game/components/ThreeDRotation";
+import { Rotation } from "../game/components/Rotation.js";
+import { ThreeDPosition } from "../game/components/ThreeDPosition.js";
+import { ThreeDRotation } from "../game/components/ThreeDRotation.js";
 
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

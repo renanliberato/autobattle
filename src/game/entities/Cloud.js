@@ -1,8 +1,8 @@
-import { Entity } from '../../ecs/Entity';
-import { Rendering } from '../components/Rendering';
-import { ThreeDRendering } from '../components/ThreeDRendering';
-import { getAngleToPoint } from '../../helpers';
-import { threeDModels } from '../../config';
+import { Entity } from '../../ecs/Entity.js';
+import { Rendering } from '../components/Rendering.js';
+import { ThreeDRendering } from '../components/ThreeDRendering.js';
+import { getAngleToPoint } from '../../helpers.js';
+import { threeDModels } from '../../config.js';
 
 function positiveOrNegative() {
     return Math.random() >= 0.5 ? 1 : -1;

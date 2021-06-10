@@ -1,26 +1,26 @@
-import { UNITSIZE, XSIZE, YSIZE } from "./config";
-import { ArcherUnit } from "./game/entities/ArcherUnit";
-import { GrassTile } from "./game/entities/GrassTile";
-import { MeleeUnit } from "./game/entities/MeleeUnit";
-import { ThreeDAttackRangeSystem } from "./game/systems/ThreeDAttackRangeSystem";
-import { MatchStepSystem } from "./game/systems/MatchStepSystem";
-import { ThreeDAttackSystem } from "./game/systems/ThreeDAttackSystem";
-import { DelayedObjectDestructionSystem } from "./game/systems/DelayedObjectDestructionSystem";
-import { ThreeDUnitMovementSystem } from "./game/systems/ThreeDUnitMovementSystem";
-import { ObjectDestructionSystem } from "./game/systems/ObjectDestructionSystem";
-import { getGame } from "./getgame";
-import { ThreeDVelocityAndAccelerationMovementSystem } from "./game/systems/ThreeDVelocityAndAccelerationMovementSystem";
-import { Cloud } from "./game/entities/Cloud";
-import { ThreeJSThreeDRelativeToCameraRotationSystem } from "./game/systems/ThreeJSThreeDRelativeToCameraRotationSystem";
-import { ThreeJSThreeDRenderingSystem } from "./game/systems/ThreeJSThreeDRenderingSystem";
-import { Tower } from "./game/entities/Tower";
-import { ThreeDRelativePositionSystem } from "./game/systems/ThreeDRelativePositionSystem";
-import { ThreeDUnitHealthBarSizingSystem } from "./game/systems/ThreeDUnitHealthBarSizingSystem";
-import { MageUnit } from "./game/entities/MageUnit";
-import { TankUnit } from "./game/entities/TankUnit";
-import { RogueUnit } from "./game/entities/RogueUnit";
+import { UNITSIZE, XSIZE, YSIZE } from "./config.js";
+import { ArcherUnit } from "./game/entities/ArcherUnit.js";
+import { GrassTile } from "./game/entities/GrassTile.js";
+import { MeleeUnit } from "./game/entities/MeleeUnit.js";
+import { ThreeDAttackRangeSystem } from "./game/systems/ThreeDAttackRangeSystem.js";
+import { MatchStepSystem } from "./game/systems/MatchStepSystem.js";
+import { ThreeDAttackSystem } from "./game/systems/ThreeDAttackSystem.js";
+import { DelayedObjectDestructionSystem } from "./game/systems/DelayedObjectDestructionSystem.js";
+import { ThreeDUnitMovementSystem } from "./game/systems/ThreeDUnitMovementSystem.js";
+import { ObjectDestructionSystem } from "./game/systems/ObjectDestructionSystem.js";
+import { getGame } from "./getgame.js";
+import { ThreeDVelocityAndAccelerationMovementSystem } from "./game/systems/ThreeDVelocityAndAccelerationMovementSystem.js";
+import { Cloud } from "./game/entities/Cloud.js";
+import { ThreeJSThreeDRelativeToCameraRotationSystem } from "./game/systems/ThreeJSThreeDRelativeToCameraRotationSystem.js";
+import { ThreeJSThreeDRenderingSystem } from "./game/systems/ThreeJSThreeDRenderingSystem.js";
+import { Tower } from "./game/entities/Tower.js";
+import { ThreeDRelativePositionSystem } from "./game/systems/ThreeDRelativePositionSystem.js";
+import { ThreeDUnitHealthBarSizingSystem } from "./game/systems/ThreeDUnitHealthBarSizingSystem.js";
+import { MageUnit } from "./game/entities/MageUnit.js";
+import { TankUnit } from "./game/entities/TankUnit.js";
+import { RogueUnit } from "./game/entities/RogueUnit.js";
 
-require('./globals');
+import lala from './globals.js';
 
 async function initialize() {
     const { state, world } = await getGame(({ scene }) => ([
@@ -37,22 +37,19 @@ async function initialize() {
         new DelayedObjectDestructionSystem(),
     ]));
 
-    // world.addEntity(new Tower(3, 0, 'a'));
-    // world.addEntity(new Tower(3, YSIZE - 1, 'b'));
-
     // enemies
     world.addEntity(new RogueUnit(1, 1, 'a'));
     world.addEntity(new TankUnit(5, 1, 'a'));
-    world.addEntity(new ArcherUnit(2, 0, 'a'));
+    world.addEntity(new MeleeUnit(2, 0, 'a'));
     world.addEntity(new ArcherUnit(4, 0, 'a'));
     world.addEntity(new RogueUnit(5, 1, 'a'));
-    world.addEntity(new MageUnit(2, 1, 'a'));
+    world.addEntity(new MeleeUnit(2, 1, 'a'));
     world.addEntity(new MageUnit(4, 1, 'a'));
 
     world.addEntity(new TankUnit(1, YSIZE - 2, 'b'));
     world.addEntity(new TankUnit(5, YSIZE - 2, 'b'));
     world.addEntity(new TankUnit(2, YSIZE - 1, 'b'));
-    world.addEntity(new TankUnit(4, YSIZE - 1, 'b'));
+    world.addEntity(new ArcherUnit(4, YSIZE - 1, 'b'));
 
     // state.army.army.forEach(u => {
     //     switch (u.kind) {

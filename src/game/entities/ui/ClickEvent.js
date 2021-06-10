@@ -1,6 +1,6 @@
-import { Position } from '../../components/Position';
-import { Entity } from '../../../ecs/Entity';
-import { Click } from '../../components/Click';
+import { Position } from '../../components/Position.js';
+import { Entity } from '../../../ecs/Entity.js';
+import { Click } from '../../components/Click.js';
 
 export class ClickEvent extends Entity {
     constructor(x, y) {

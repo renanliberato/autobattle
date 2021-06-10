@@ -1,17 +1,16 @@
-import { Entity } from '../../ecs/Entity';
-import { Health } from '../components/Health';
-import { Stats } from '../components/Stats';
-import { ThreeDAttackRange } from '../components/ThreeDAttackRange';
-import { TeamMember } from '../components/TeamMember';
-import { Rendering } from '../components/Rendering';
-import { UnitKind } from '../components/UnitKind';
-import { ThreeDRendering } from '../components/ThreeDRendering';
-import { GridPosition } from '../components/GridPosition';
-import { threeDModels, UNITSIZE } from '../../config';
-import { HealthBar } from './HealthBar';
-import anime from 'animejs';
-import { ThreeDDamageText } from './ThreeDDamageText';
-import { getDistance } from '../../helpers';
+import { Entity } from '../../ecs/Entity.js';
+import { Health } from '../components/Health.js';
+import { Stats } from '../components/Stats.js';
+import { ThreeDAttackRange } from '../components/ThreeDAttackRange.js';
+import { TeamMember } from '../components/TeamMember.js';
+import { Rendering } from '../components/Rendering.js';
+import { UnitKind } from '../components/UnitKind.js';
+import { ThreeDRendering } from '../components/ThreeDRendering.js';
+import { GridPosition } from '../components/GridPosition.js';
+import { threeDModels, UNITSIZE } from '../../config.js';
+import { HealthBar } from './HealthBar.js';
+import { ThreeDDamageText } from './ThreeDDamageText.js';
+import { getDistance } from '../../helpers.js';
 
 export class MeleeUnit extends Entity {
     constructor(x, z, team) {

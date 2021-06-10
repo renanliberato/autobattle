@@ -1,4 +1,4 @@
-import { System } from '../../ecs/System';
+import { System } from '../../ecs/System.js';
 
 export class ZDogThreeDRenderingSystem extends System {
     constructor(scene, renderingUnit) {

@@ -1,7 +1,7 @@
-import { Position } from '../../components/Position';
-import { Entity } from '../../../ecs/Entity';
-import { Rendering } from '../../components/Rendering';
-import { TextRendering } from '../../components/TextRendering';
+import { Position } from '../../components/Position.js';
+import { Entity } from '../../../ecs/Entity.js';
+import { Rendering } from '../../components/Rendering.js';
+import { TextRendering } from '../../components/TextRendering.js';
 
 export class Text extends Entity {
     constructor(x, y, text, size, color, bold) {

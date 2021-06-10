@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 // Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
 //
 //    Orbit - left mouse / touch: one-finger move
@@ -16,7 +14,7 @@ const _endEvent = {
     type: 'end'
 };
 
-class OrbitControls extends THREE.EventDispatcher {
+export class OrbitControls extends THREE.EventDispatcher {
 
     constructor(object, domElement) {
 

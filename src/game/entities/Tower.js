@@ -1,14 +1,14 @@
-import { Entity } from '../../ecs/Entity';
-import { Health } from '../components/Health';
-import { Stats } from '../components/Stats';
-import { ThreeDAttackRange } from '../components/ThreeDAttackRange';
-import { TeamMember } from '../components/TeamMember';
-import { Rendering } from '../components/Rendering';
-import { ThreeDRendering } from '../components/ThreeDRendering';
-import { UnitKind } from '../components/UnitKind';
-import { GridPosition } from '../components/GridPosition';
-import { threeDModels, UNITSIZE } from '../../config';
-import { HealthBar } from './HealthBar';
+import { Entity } from '../../ecs/Entity.js';
+import { Health } from '../components/Health.js';
+import { Stats } from '../components/Stats.js';
+import { ThreeDAttackRange } from '../components/ThreeDAttackRange.js';
+import { TeamMember } from '../components/TeamMember.js';
+import { Rendering } from '../components/Rendering.js';
+import { ThreeDRendering } from '../components/ThreeDRendering.js';
+import { UnitKind } from '../components/UnitKind.js';
+import { GridPosition } from '../components/GridPosition.js';
+import { threeDModels, UNITSIZE } from '../../config.js';
+import { HealthBar } from './HealthBar.js';
 
 export class Tower extends Entity {
     constructor(x, z, team) {

@@ -1,4 +1,4 @@
-import { System } from '../../ecs/System';
+import { System } from '../../ecs/System.js';
 
 export class ThreeDRelativeToCameraRotationSystem extends System {
     constructor() {

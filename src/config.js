@@ -1,5 +1,5 @@
-export const XSIZE = 11;
-export const YSIZE = 8;
+export const XSIZE = 6;
+export const YSIZE = 11;
 export const SCALE = 1;
 export const UNITSIZE = 8;
 export const CANVAS_WIDTH = UNITSIZE * 7 * SCALE;
